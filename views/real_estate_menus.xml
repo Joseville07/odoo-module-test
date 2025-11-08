@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="module_test_menu_root" name="Real Estate">
+    <menuitem id="odoo-module-test_menu_root" name="Real Estate">
 
-        <menuitem id="module_test_menu_main" name="Advertisements">
-            <menuitem id="estate_property_menu_action" action="module_test.action_estate_property" name="Estate Property"/>
+        <menuitem id="odoo-module-test_menu_main" name="Advertisements">
+            <menuitem id="estate_property_menu_action" action="odoo-module-test.action_estate_property" name="Estate Property"/>
         </menuitem>
 
-        <menuitem id="model_test_menu_settings" name="Settings">
-            <menuitem id="estate_property_type_menu_action" action="module_test.action_estate_property_type" name="Property Type"/>
+        <menuitem id="odoo-module-test_menu_settings" name="Settings">
+            <menuitem id="estate_property_type_menu_action" action="odoo-module-test.action_estate_property_type" name="Property Type"/>
+            <menuitem id="estate_property_tags_menu_action" action="odoo-module-test.action_estate_property_tags" name="Property Tags"/>
         </menuitem>
 
     </menuitem>
