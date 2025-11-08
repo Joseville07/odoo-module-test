@@ -16,6 +16,7 @@ class EstateProperty(models.Model):
                               ('canceled', 'Canceled')
                               ], string="Status", copy=False, required=True, default='new')
     property_type_id = fields.Many2one(comodel_name="estate_property_type")
+    property_tags_id = fields.Many2many(comodel_name="estate_property_tags")
     date_availability = fields.Date(default= lambda self: fields.Date.add(fields.Date.today(), months=3))
     expected_price = fields.Float(required=True)
     selling_price = fields.Float(readonly=True, copy=False)

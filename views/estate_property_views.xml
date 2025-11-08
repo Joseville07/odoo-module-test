@@ -33,6 +33,7 @@
                     <group>
                         <field name="postcode"></field>
                         <field name="date_availability"></field>
+                        <field name="property_tags_id" widget="many2many_tags"></field>
                         <field name="property_type_id"></field>
                     </group>
                          
