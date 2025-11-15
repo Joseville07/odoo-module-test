@@ -32,6 +32,6 @@ class EstateProperty(models.Model):
                                                     ('east', 'East'),
                                                     ('west', 'West')
                                                     ])
-    
+    offer_ids = fields.One2many(comodel_name="estate_property_offer", inverse_name="property_id")
     buyer_id = fields.Many2one(comodel_name="res.partner", ondelete="restrict")
-    salesperson_id = fields.Many2one(comodel_name="res.users", ondelete="restrict")
+    salesperson_id = fields.Many2one(comodel_name="res.users", ondelete="restrict", default=lambda self: self.env.user)
