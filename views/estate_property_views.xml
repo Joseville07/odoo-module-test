@@ -60,6 +60,7 @@
                                 <field name="garden"></field>
                                 <field name="garden_area"></field>
                                 <field name="garden_orientation"></field>
+                                <field name="total_area"></field>
                             </group>
                         </group>
                     </page>
@@ -74,12 +75,12 @@
 
                     <page string="Offers">
                         <field name="offer_ids">
-                                <list>
+                                <list editable="bottom">
                                     <field name="price"/>
                                     <field name="status"/>
                                     <field name="partner_id"/>
                                 </list>
-                                </field>
+                            </field>
                         </page>
                 </notebook>
                 </sheet>

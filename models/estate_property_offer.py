@@ -9,5 +9,5 @@ class EstatePropertyOffer(models.Model):
         ('accepted', 'Accepted'),
         ('refused', 'Refused')
     ], string='Status', default='refused', required=True)
-    property_id = fields.Many2one(comodel_name="estate.property", string='Property', required=True)
+    property_id = fields.Many2one(comodel_name="estate_property", string='Property', required=True)
     partner_id = fields.Many2one(comodel_name="res.partner", string='Buyer', required=True)
