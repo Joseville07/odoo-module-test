@@ -21,6 +21,12 @@
         <field name="model">estate_property</field>
         <field name="arch" type="xml">
             <form string="Estate property">
+                <header>
+                    <button name="action_sold" string="Sold" class="btn-primary" type="object"/>
+                    <button name="action_cancel" string="Cancel" type="object"/>
+                    
+
+                </header>
                 <sheet>
                     <div class="oe_title">
                         <label for="name"/>
@@ -82,6 +88,8 @@
                                     <field name="partner_id"/>
                                     <field name="deadline_date"/>
                                     <field name="validity"/>
+                                    <button name="action_accept" type="object" icon="fa-check" title="Accept Offer"/>
+                                    <button name="action_refuse" type="object" icon="fa-remove" title="Refuse Offer"/>
                                 </list>
                             </field>
                         </page>

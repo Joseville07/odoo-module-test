@@ -1,8 +1,17 @@
-from odoo import models, fields, api
-
+from odoo import models, fields, api, _
+from odoo.exceptions import UserError
 class EstateProperty(models.Model):
     _name = "estate_property"
     _description = "Estate Property"
+    _sql_constraints = [
+        ("check_expected_price", "CHECK(expected_price > 0)", "The expected price must be greater than 0"),
+        ("check_selling_price", "CHECK(selling_price >= 0)", "The selling price cant be less than 0")
+    ]
+    
+    
+    
+    
+    
     
     name = fields.Char(string="Property Name", required=True)
     description = fields.Text(string="Description")
@@ -52,3 +61,16 @@ class EstateProperty(models.Model):
     def _onchange_garden(self):
         self.garden_area = self.garden and 10
         self.garden_orientation = self.garden and "nort"
+
+
+    def action_sold(self):
+        if self.filtered(lambda p: p.state == "canceled"):
+            raise UserError(_("A canceled property can not be sold"))
+        self.filtered(lambda p: p.state != "sold").write({"state": "sold"})
+        return True
+
+    def action_cancel(self):
+        if self.filtered(lambda p: p.state == "sold"):
+            raise UserError (_("A sold property can not be canceled"))
+        self.filtered(lambda p: p.state != "canceled").write({"state": "canceled"})
+        return True
