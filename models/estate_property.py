@@ -32,6 +32,7 @@ class EstateProperty(models.Model):
                                                     ('east', 'East'),
                                                     ('west', 'West')
                                                     ])
+    best_offer = fields.Float(compute="_compute_best_offer")
     total_area = fields.Float(compute="_compute_total_area")
     offer_ids = fields.One2many(comodel_name="estate_property_offer", inverse_name="property_id")
     buyer_id = fields.Many2one(comodel_name="res.partner", ondelete="restrict")
@@ -41,3 +42,13 @@ class EstateProperty(models.Model):
     def _compute_total_area(self):
         for area in self:
             area.total_area = area.living_area + area.garden_area
+            
+    @api.depends('offer_ids.price')
+    def _compute_best_offer(self):
+        for property in self:
+            property.best_offer = max(property.offer_ids.mapped("price"), default=0)
+            
+    @api.onchange("garden")
+    def _onchange_garden(self):
+        self.garden_area = self.garden and 10
+        self.garden_orientation = self.garden and "nort"
